@@ -5,6 +5,8 @@ class VideoProcessor {
     private $sizeLimit = 500000000;
     private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogv", "ogg", "avi", "wmv", "mov", "mpeg", "mpg");
     private $ffmpegPath = "ffmpeg/bin/ffmpeg";
+    private $ffprobePath = "ffmpeg/bin/ffprobe";
+
 
     public function __construct($con) {
         $this->con = $con;
@@ -39,6 +41,11 @@ class VideoProcessor {
             }
             // $tempFilePathを削除できなかったら、、、false
             if(!$this->deleteFile($tempFilePath)){
+                echo "Upload failed\n";
+                return false;
+            }
+            // サムネが作れなかったら、、false
+            if(!$this->generateThumbnails($finalFilePath)){
                 echo "Upload failed\n";
                 return false;
             }
@@ -114,6 +121,46 @@ class VideoProcessor {
         }
         return true;
     }
+
+    // サムネイルを作る
+    public function generateThumbnails($filePath){
+        $thumbnailSize = "210x118";
+        $numThumbnails = 3;
+        $pathToThumbnail = "uploads/videos/thumbnails";
+        $duration = $this->getVideoDuration($filePath);
+        $videoId = $this->con->lastInsertId();
+        $this->updateDuration($duration, $videoId);
+    }
+
+    private function getVideoDuration($filePath){
+        return shell_exec("$this->ffprobePath -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $filePath");
+        
+    }
+
+    private function updateDuration($duration, $videoId){
+        $duration = (int)$duration;
+        $hours = floor($duration / 3600);
+        $mins = floor(($duration)-($hours*3600)/60);
+        $secs = floor($duration % 60);
+        
+        $hours = ($hours < 1) ? "" : $hours . ":";
+        // 上の行はこの　if($hours < 1) {
+        //               $hours = "";
+        //             } else {
+        //               $hours = $hours . ":";
+        //             }　
+        // と同じ意味なので、どっちを使ってもOK！！
+        $mins = ($mins < 10) ? "0" . $mins. ":" : $mins . ":";
+        $secs = ($secs < 10) ? "0" . $secs : $secs;
+
+        $duration = $hours.$mins.$secs;
+        $query = $this->con->prepare("UPDATE videos SET duration=:duration WHERE id=:videoId");
+        $query->bindParam(":duration", $duration);
+        $query->bindParam(":videoId", $videoId);
+        $query->execute();
+
+    }
+    
 
 
 }
