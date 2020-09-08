@@ -14,9 +14,10 @@ if(isset($_POST["submitButton"])) {
 
     $email = FormSanitizer::sanitizeFormEmail($_POST["email"]);
     $email2 = FormSanitizer::sanitizeFormEmail($_POST["email2"]);
-    
+
     $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
     $password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
+
 
     $wasSuccessful = $account->register($firstName, $lastName, $username, $email, $email2, $password, $password2);
 
@@ -28,6 +29,14 @@ if(isset($_POST["submitButton"])) {
 
     }
 }
+
+
+function getInputValue($name) {
+    if(isset($_POST[$name])) {
+        echo $_POST[$name];
+    }
+}
+
 
 
 function getInputValue($name) {
@@ -81,6 +90,7 @@ function getInputValue($name) {
 
                 <?php echo $account->getError(Constants::$passwordDoNotMatch); ?>
                 <?php echo $account->getError(Constants::$passwordInvalid); ?>
+
                 <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                 <input type="password" name="password2" placeholder="Confirm password" autocomplete="off" required>
 

@@ -30,7 +30,9 @@ class Account {
         $this->validateFirstName($fn);
         $this->validateLastName($ln);
         $this->validateUsername($un);
+
         $this->validateEmail($em, $em2);
+
         $this->validatePasswords($pw, $pw2);
 
         if(empty($this->errorArray)) {
@@ -55,7 +57,6 @@ class Account {
         $query->bindParam(":pic", $profilePic);
 
         return $query->execute();
-
 
     }
     
@@ -86,6 +87,7 @@ class Account {
         }
 
     }
+
 
     private function validateEmail($em, $em2) {
         if($em != $em2) {
@@ -118,6 +120,7 @@ class Account {
             array_push($this->errorArray, Constants::$passwordInvalid);
             return;
         }
+
     }
     
     public function getError($error) {
