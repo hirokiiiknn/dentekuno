@@ -19,7 +19,6 @@ if(isset($_POST["submitButton"])) {
         $_SESSION["userLoggedIn"] = $username;
         // index.phpに移行する
         header("Location: index.php");
-
     }
 }
 

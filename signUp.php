@@ -30,7 +30,7 @@ if(isset($_POST["submitButton"])) {
     }
 }
 
-
+// 一度入力した値を残しておく
 function getInputValue($name) {
     if(isset($_POST[$name])) {
         echo $_POST[$name];
@@ -42,7 +42,6 @@ function getInputValue($name) {
 <html>
 <head>
     <title>VideoTube</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
