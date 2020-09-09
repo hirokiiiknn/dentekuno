@@ -1,4 +1,6 @@
 <?php
+require_once("includes/classes/ButtonProvider.php"); 
+
 class VideoInfoControls{
   private $video, $userLoggedInObj;
   public function __construct($video, $userLoggedInObj){
@@ -16,7 +18,15 @@ class VideoInfoControls{
   }
 
   private function createLikeButton(){
-    return "<button>Like</button>";
+    $text = $this->video->getLikes();
+    $videoId = $this->video->getId();
+    $action = "likeVideo(this, $videoId)";
+    $class = "likeButton";
+
+    $imageSrc = "assets/images/icons/thumb-up.png";
+    
+    
+    return ButtonProvider::createButton($text, $imageSrc, $action, $class);
   }
   private function createDislikeButton(){
     return "<button>Dislike</button>";
