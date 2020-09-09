@@ -19,6 +19,9 @@ $video->incrementViews();
 <?php
 $videoPlayer = new videoPlayer($video);
   echo $videoPlayer->create(true);
+
+$videoPlayer = new videoInfoSection($con, $video, $userLoggedInObj);
+  echo $videoPlayer->create();
 ?>
   
 </div>
