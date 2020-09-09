@@ -1,6 +1,7 @@
 <?php
 require_once("includes/config.php"); 
-require_once("includes/classes/user.php"); 
+require_once("includes/classes/user.php");
+require_once("includes/classes/video.php");  
 
 
 $usernameLoggedIn = isset($_SESSION["userLoggedIn"]) ? $_SESSION["userLoggedIn"] : "";
