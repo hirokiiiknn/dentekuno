@@ -5,7 +5,6 @@ require_once("includes/classes/videoInfoSection.php");
 
 
 
-
 if(!isset(($_GET["id"]))){
   echo "no url";
   exit();
