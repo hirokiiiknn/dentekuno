@@ -52,7 +52,7 @@ class VideoDetailsFormProvider {
                     </select>
                 </div>";
     }
-
+    
     private function createCategoriesInput() {
         $query = $this->con->prepare("SELECT * FROM categories");    
         $query->execute();
