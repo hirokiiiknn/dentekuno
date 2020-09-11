@@ -27,17 +27,20 @@ class VideoInfoSection{
               </div>
             </div>";
   }
+
+
   private function createSecondaryInfo(){
     $description = $this->video->getDescription();
     $uploadDate = $this->video->getUploadDate();
     $uploadedBy = $this->video->getUploadedBy();
     $profileButton = ButtonProvider::createProfileButton($this->con, $uploadedBy);
 
-    // アップロードしたユーザーとログインしているユーザーが一緒なら
+    // もしアップロードしたユーザーとログインしているユーザーが一緒なら
     if($uploadedBy == $this->userLoggedInObj->getUsername()){
       $actionButton = ButtonProvider::createEditVideoButton($this->video->getId());
     } else {
-      $actionButton = "";
+      $userToObject = new User($this->con, $uploadedBy);
+      $actionButton = ButtonProvider::createSubscriberButton($this->con, $userToObject, $this->userLoggedInObj);
     }
 
     return "<div class='secondaryInfo'>
@@ -50,9 +53,12 @@ class VideoInfoSection{
                       $uploadedBy
                     </a>
                   </span>
-                  <span class=''>Published on $uploadDate</span>
+                  <span class='date'>Published on $uploadDate</span>
                 </div>
                 $actionButton
+              </div>
+              <div class='descriptionContainer'>
+                $description
               </div>
             </div>";
     }
