@@ -22,14 +22,42 @@ class VideoInfoSection{
               <h1>$title</h1>
 
               <div class='bottomSection'>
-                <span class='viewCount'>$views</span>
+                <span class='viewCount'>$views views</span>
                 $controls
               </div>
             </div>";
   }
   private function createSecondaryInfo(){
-    
-  }
+    $description = $this->video->getDescription();
+    $uploadDate = $this->video->getUploadDate();
+    $uploadedBy = $this->video->getUploadedBy();
+    $profileButton = ButtonProvider::createProfileButton($this->con, $uploadedBy);
+
+    // アップロードしたユーザーとログインしているユーザーが一緒なら
+    if($uploadedBy == $this->userLoggedInObj->getUsername()){
+      $actionButton = ButtonProvider::createEditVideoButton($this->video->getId());
+    } else {
+      $actionButton = "";
+    }
+
+    return "<div class='secondaryInfo'>
+              <div class='topRow'>
+                $profileButton
+
+                <div class='uploadInfo'>
+                  <span class='owner'>
+                    <a href='profile.php?username=$uploadedBy'>
+                      $uploadedBy
+                    </a>
+                  </span>
+                  <span class=''>Published on $uploadDate</span>
+                </div>
+                $actionButton
+              </div>
+            </div>";
+    }
 
 }
 ?>
+
+

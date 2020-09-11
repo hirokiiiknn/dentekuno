@@ -48,7 +48,10 @@ class Video {
     }
 
     public function getUploadDate() {
-        return $this->sqlData["uploadDate"];
+        $date= $this->sqlData["uploadDate"];
+        // php date formatとグーグルで検索するとdateの表記が出てくる。
+        // またstrtotimeはdate()がstringなのでそれをtimeに変更している.
+        return date("M j Y", strtotime($date));
     }
 
     public function getViews() {
@@ -193,3 +196,4 @@ class Video {
 
 }
 ?>
+
