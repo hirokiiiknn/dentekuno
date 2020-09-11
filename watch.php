@@ -2,6 +2,8 @@
 require_once("includes/header.php"); 
 require_once("includes/classes/videoPlayer.php"); 
 require_once("includes/classes/videoInfoSection.php"); 
+require_once("includes/classes/CommentSection.php"); 
+
 
 
 
@@ -23,6 +25,9 @@ $videoPlayer = new videoPlayer($video);
 
 $videoPlayer = new videoInfoSection($con, $video, $userLoggedInObj);
   echo $videoPlayer->create();
+
+$CommentSection = new CommentSection($con, $video, $userLoggedInObj);
+  echo $CommentSection->create();
 ?>
   
 </div>
