@@ -7,8 +7,9 @@ function postComment(button, postedBy, videoId, replayTo, containerClass){
 
   if(commentText){
     $.post("ajax/postComment.php", {commentText: commentText, postedBy: postedBy, videoId: videoId, responseTo: replayTo})
-    .done(function(data){
-      alert(data);
+    .done(function(comment){
+      
+      $("." + containerClass).prepend(comment);
     });
 
   } else {
