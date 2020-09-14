@@ -1,4 +1,5 @@
 <?php
+
 class Video {
 
     private $con, $sqlData, $userLoggedInObj;
@@ -201,6 +202,20 @@ class Video {
         $query->execute();
 
         return $query->rowCount();
+    }
+
+    public function getComments(){
+        $query = $this->con->prepare("SELECT * FROM comments WHERE videoId=:videoId AND responseTo=0 ORDER BY datePosted DESC");
+        $query->bindParam(":videoId", $id);
+        $id = $this->getId();
+        $query->execute();
+
+        $comments = array();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)){
+            $comment = new Comment($this->con, $row, $this->userLoggedInObj, $id);
+            array_push($comments, $comment);
+        }
+        return $comments;
     }
 }
 ?>

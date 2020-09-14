@@ -361,6 +361,10 @@ a:hover {
     flex-direction: column;
 }
 
+.commentForm{
+    margin-bottom: 20px;
+}
+
 .CommentSection .header .commentForm .profilePicture,
 .CommentSection .comment .profilePicture ,
 .commentForm .profilePicture{
@@ -416,38 +420,38 @@ a:hover {
     color: #000;
     
 }
-.commentSection .itemContainer{
+.CommentSection .itemContainer{
     margin-bottom: 16px;
 }
 
-.commentSection .comment{
+/* .CommentSection .comment{
     display: flex;
 
-}
+} */
 
-.commentSection .commentHeader {
+.CommentSection .commentHeader {
     margin-bottom: 2px;
 
 }
-.commentSection .comment .username{
+.CommentSection .comment .username{
     margin-right: 8px;
     color: #111;
     font-size: 13px;
     font-weight: 500;
 }
 
-.commentSection .comment .body{
+.CommentSection .comment .body{
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
 }
 
-.itemContainer .controls {
+.itemContainer .comment .controls {
     margin-left: 64px;
 }
 
-.itemContainer .controls button,
-.itemContainer .controls .likesCount{
+.itemContainer .comment .controls button,
+.itemContainer .comment .controls .likesCount{
     height: 32px;
     background-color: transparent;
     border: none;
@@ -456,15 +460,15 @@ a:hover {
     color: rgba(17, 17, 17, 0.6);
 }
 
-.itemContainer .controls button {
+.itemContainer .comment .controls button {
     cursor: pointer;
     
 }
-.itemContainer .controls .likesCount{
+.itemContainer .comment .controls .likesCount{
     margin: 0 5px;
 }
 
-.itemContainer .controls button img{
+.itemContainer .comment .controls button img{
     height: 16px;
 }
 .itemContainer .commentForm .profilePicture {
@@ -481,4 +485,15 @@ a:hover {
 
 .hidden {
     display:none !important;
+}
+
+.repliesSection{
+    padding-left: 64px;
+    margin-top: 16px;
+}
+
+.CommentSection .itemContainer .viewReplies {
+    cursor: pointer;
+    font-size:14px;
+    font-weight: 500;
 }

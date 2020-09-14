@@ -9,7 +9,12 @@ function postComment(button, postedBy, videoId, replayTo, containerClass){
     $.post("ajax/postComment.php", {commentText: commentText, postedBy: postedBy, videoId: videoId, responseTo: replayTo})
     .done(function(comment){
       
-      $("." + containerClass).prepend(comment);
+      if(!replayTo){
+        $("." + containerClass).prepend(comment);
+      } else {
+        $(button).parent().siblings("." + containerClass).append(comment);
+      }
+      
     });
 
   } else {
@@ -18,11 +23,10 @@ function postComment(button, postedBy, videoId, replayTo, containerClass){
 }
 
 function toggleReply(button){
-
   var parent = $(button).closest(".itemContainer");
   var commentForm = parent.find(".commentForm").first();
 
-  commentForm.toggleClass("hidden");
+  commentForm.toggleClass("hidden"); 
 }
 
 function likeComment(commentId, button, videoId){
@@ -85,3 +89,15 @@ function updateLikesValue(element, num){
     //                    current value  +  new value
     element.text(parseInt(likesCountVal) + parseInt(num));
 }
+
+function getReplies(commentId, button, videoId){
+  $.post("ajax/getCommentReplies.php", {commentId: commentId, videoId: videoId})
+  .done(function(comments){
+    var replies = $("<div>").addClass("repliesSection");
+    replies.append(comments);
+
+    $(button).replaceWith(replies);
+  })
+
+}
+
