@@ -26,7 +26,7 @@ class Comment {
         $videoId = $this->getVideoId();
         $body = $this->sqlData["body"];
         $postedBy = $this->sqlData["postedBy"];
-        $profileButton = ButtonProvider::createUserProfileButton($this->con, $postedBy);
+        $profileButton = ButtonProvider::createProfileButton($this->con, $postedBy);
         $timespan = $this->time_elapsed_string($this->sqlData["datePosted"]);
 
         $commentControlsObj = new CommentControls($this->con, $this, $this->userLoggedInObj);

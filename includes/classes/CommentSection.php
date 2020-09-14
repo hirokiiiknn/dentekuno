@@ -28,7 +28,7 @@ class CommentSection {
             $commentItems .= $comment->create();
         }
 
-        return "<div class='CommentSection'>
+        return "<div class='commentSection'>
 
                     <div class='header'>
                         <span class='commentCount'>$numComments Comments</span>
