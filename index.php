@@ -1,15 +1,21 @@
 <?php require_once("includes/header.php"); ?>
 
 
-<?php
+<div class="videoSection">
+  <?php
+  $subscriptionsProvider = new subscriptionsProvider($con, $userLoggedInObj);
+  $subscriptionVideos = $subscriptionsProvider->getVideos();
 
-if(isset($_SESSION["userLoggedIn"])) {
-  echo "user is logged in as\n" . $userLoggedInObj->getName();
-} else {
-  echo "not logged in";
-}
+  $videoGrid = new videoGrid($con, $userLoggedInObj->getUsername());
 
-?>
+  if(User::isLoggedIn() && sizeOf($subscriptionVideos) > 0){
+    echo $videoGrid->create($subscriptionVideos, "Subscriptions", false);
+  }
+
+  
+  echo $videoGrid->create(null, "Recommended", false);
+  ?>
+</div>
 
 
 <?php require_once("includes/footer.php"); ?>
