@@ -47,7 +47,7 @@ class CommentControls {
         $videoId = $this->comment->getVideoId();
         $commentId = $this->comment->getId();
 
-        $profileButton = ButtonProvider::createProfileButton($this->con, $postedBy);
+        $profileButton = ButtonProvider::createUserProfileButton($this->con, $postedBy);
         
         $cancelButtonAction = "toggleReply(this)";
         $cancelButton = ButtonProvider::createButton("Cancel", null, $cancelButtonAction, "cancelComment");

@@ -50,7 +50,8 @@ function getInputValue($name) {
         <div class="column">
 
             <div class="header">
-                <img src="assets/images/icons/VideoTubeLogo.png" title="logo" alt="Site logo">
+                <img src="assets/images/icons/dentekuno.png" title="logo" alt="Site logo">
+                <img src="assets/images/icons/logo_cool_japan.gif" title="logo" alt="coolJapan">
                 <h3>Sign In</h3>
                 <span>to continue to VideoTube</span>
             </div>

@@ -33,7 +33,7 @@ class VideoInfoSection{
     $description = $this->video->getDescription();
     $uploadDate = $this->video->getUploadDate();
     $uploadedBy = $this->video->getUploadedBy();
-    $profileButton = ButtonProvider::createProfileButton($this->con, $uploadedBy);
+    $profileButton = ButtonProvider::createUserProfileButton($this->con, $uploadedBy);
 
     // もしアップロードしたユーザーとログインしているユーザーが一緒なら
     if($uploadedBy == $this->userLoggedInObj->getUsername()){

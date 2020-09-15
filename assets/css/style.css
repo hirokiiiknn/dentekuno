@@ -51,12 +51,14 @@ a:hover {
 
 #mastHeadContainer .logoContainer {
     width: 150px;
+    display:flex;
 }
 
 #mastHeadContainer .logoContainer img {
     height: 25px;
     margin-left: 8px;
 }
+
 
 #sideNavContainer {
     width: 240px;
@@ -639,4 +641,14 @@ a:hover {
 }
 .videoGridHeader a:last-child:after {
     content: ''
+}
+
+.coolJapan{
+    width: 100px;
+    margin-left: 24%;
+}
+
+.signInLink{
+    color: #f00;
+    margin-left: 15px;
 }
