@@ -4,7 +4,7 @@
 <div class="videoSection">
   <?php
   $subscriptionsProvider = new subscriptionsProvider($con, $userLoggedInObj);
-  $subscriptionVideos = $subscriptionsProvider->getVideos();
+  $subscriptionVideos = $subscriptionsProvider ->getVideos();
 
   $videoGrid = new videoGrid($con, $userLoggedInObj->getUsername());
 
