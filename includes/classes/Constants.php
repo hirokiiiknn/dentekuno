@@ -12,6 +12,10 @@ class Constants{
 
   public static $logginFail = "Your username or password incorrect";
 
+  public static $passwordIncorrect = "Incorrect password";
+
+
+
 
 
 
