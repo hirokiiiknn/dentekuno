@@ -8,7 +8,7 @@ date_default_timezone_set("Asia/Tokyo");
 
 
 try {
-    $con = new PDO("mysql:dbname=dentechno;host=localhost", "root", "");
+    $con = new PDO("mysql:dbname=dentechno;port=3306;host=localhost", "root", "");
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     $con->query("SET time_zone = '+09:00'");
     $con->query("SET @@session.time_zone = '+09:00'");
