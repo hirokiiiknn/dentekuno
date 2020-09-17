@@ -40,7 +40,7 @@ function getInputValue($name) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VideoTube</title>
+    <title>dentekuno</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -57,7 +57,7 @@ function getInputValue($name) {
                 <img src="assets/images/icons/dentekuno.png" title="logo" alt="Site logo">
                 <img src="assets/images/icons/logo_cool_japan.gif" title="logo" alt="coolJapan">
                 <h3>Sign Up</h3>
-                <span>to continue to VideoTube</span>
+                <span>to continue to dentekuno</span>
             </div>
             <div class="loginForm">
                 <form action="signUp.php" method="POST">
