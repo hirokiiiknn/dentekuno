@@ -4,7 +4,7 @@ ob_start(); //Turns on output buffering
 // これで$_SESSIONを使うことができる
 session_start();
 
-date_default_timezone_set("Asia/Tokyo");
+// date_default_timezone_set("Asia/Tokyo");
 
 $servername = "us-cdbr-east-02.cleardb.com";
 $username = "bafba681bcdc9f";
