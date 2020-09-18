@@ -6,19 +6,19 @@ session_start();
 
 // date_default_timezone_set("Asia/Tokyo");
 
-// $servername = "us-cdbr-east-02.cleardb.com";
-// $username = "bafba681bcdc9f";
-// $password = "b78e28cb";
+$servername = "us-cdbr-east-02.cleardb.com";
+$username = "bafba681bcdc9f";
+$password = "b78e28cb";
 
-// try {
-//     $con = new PDO("mysql:dbname=dentechno;port=3032;host=$servername", $username, $password);
-//     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    // $con->query("SET time_zone = '+09:00'");
-    // $con->query("SET @@session.time_zone = '+09:00'");
-// }
-// catch (PDOException $e) {
-//     echo "Connection failed: " . $e->getMessage();
-// }
+try {
+    $con = new PDO("mysql:dbname=dentechno;port=3036;host=$servername", $username, $password);
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+    $con->query("SET time_zone = '+09:00'");
+    $con->query("SET @@session.time_zone = '+09:00'");
+}
+catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
 
 // function dbConnect(){
 //     $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
@@ -36,33 +36,4 @@ session_start();
 //   }
 
 
-$user = "bafba681bcdc9f";
-
-$pass = "b78e28cb";       
-
-$dsn = "mysql:dbname=db1;port=3306;host=localhost;    charset=utf8";        
-
-try{ 
-
-     $dbh = new PDO($dsn, $user, $pass);           
-
-     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
-
-     $sql="SELECT * FROM recipes";          
-
-     $stmt = $dbh->query($sql);           
-
-     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);           
-
-     print_r($result);       
-
-     $dbh = null;       
-
-}      
-
-catch(PDOException $e){           
-
-      echo 'Connection failed: ' . $e->getMessage();       
-
-} 
 ?>
