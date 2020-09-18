@@ -40,7 +40,7 @@ $user = "bafba681bcdc9f";
 
 $pass = "b78e28cb";       
 
-$dsn = "mysql:dbname=db1;port=8082;host=localhost;    charset=utf8";        
+$dsn = "mysql:dbname=db1;port=8889;host=localhost;    charset=utf8";        
 
 try{ 
 
