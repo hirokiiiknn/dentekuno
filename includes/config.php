@@ -11,7 +11,7 @@ $username = "bafba681bcdc9f";
 $password = "b78e28cb";
 
 try {
-    $con = new PDO("mysql:dbname=dentechno;port=3036;host=$servername", $username, $password);
+    $con = new PDO("mysql:dbname=dentechno;port=8082;host=$servername", $username, $password);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     $con->query("SET time_zone = '+09:00'");
     $con->query("SET @@session.time_zone = '+09:00'");
